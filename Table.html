@@ -53,10 +53,10 @@
                 <table id="tb1" border="1px" style=" background-color: rgba(56, 184, 179, 0.51);text-align: center;margin-top: 1%;border-top: goldenrod;width:100%">
                     <thead>
                         <tr>
-                            <th style="width: 5%;background-color: darkorange">Id</th>
-                            <th style="width: 30%;background-color: darkorange">Name</th>
-                            <th style="width: 5%;background-color: darkorange">Age</th>
-                            <th style="width: 10%;background-color: darkorange">Gender</th>
+                            <th onclick="sortColumn(this)" style="width: 5%;background-color: darkorange">Id</th>
+                            <th onclick="sortColumn(this)"style="width: 30%;background-color: darkorange">Name</th>
+                            <th onclick="sortColumn(this)"style="width: 5%;background-color: darkorange">Age</th>
+                            <th onclick="sortColumn(this)"style="width: 10%;background-color: darkorange">Gender</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -233,6 +233,43 @@
                         tbl.rows[r].style.display = 'none';
                     }
                 }
+            }
+            function sortColumn(column){
+                var table = document.getElementById("tb1");
+                var rows = Array();
+                var sort_index = column.cellIndex;
+                var column_data = Array();
+                var sorted_rows = Array();
+                for (var r=1; r < table.rows.length; r++){
+                    var row = Array();
+                    for (var c=0; c < table.rows[r].cells.length; c++){
+                        row.push(table.rows[r].cells[c].innerHTML);
+                        if (sort_index === c){
+                            column_data.push(table.rows[r].cells[c].innerHTML);
+                        }
+                    }
+                    rows.push(row)
+//                    column_data[rows[r].cells[sort_index].innerHTML] = r;
+                }
+                for (var r=1; r <= table.rows.length; r++){
+                    table.deleteRow(r);
+                }
+//                sorted_data = column_data.sort();
+//                if (sorted_data === Object.keys(column_data)){
+//                    sorted_data = sorted_data.reverse();
+//                }
+//                for(var i=0; i < sorted_data.length; i++){
+//                    for (var r=0; r < rows.length; r++){
+//                        if (sorted_data[i] === rows[r][sort_index]){
+//                            data = {"Id":rows[r][0],
+//                                    "Name":rows[r][1],
+//                                    "Age":rows[r][2],
+//                                    "Gender":rows[r][3]};
+//                            addRow(JSON.stringify(data));
+//                            break;
+//                        }
+//                    }
+//                }
             }
         </script>
     </body>
