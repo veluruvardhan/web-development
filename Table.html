@@ -4,57 +4,79 @@
         <meta charset="UTF-8">
         <title>JavaScriptTable</title>
     </head>
-    <body style="margin-left: 10%;margin-right: 10%;">
+    <body style="margin-left: 10%;margin-right: 10%;background-color:rgba(194, 214, 149, 0.4)">
         <div id="h1">
             <h1 style=" background-color: rgba(56, 184, 179, 0.51); text-align: center; color: darkorange;">My Table</h1>
         </div>
-        <div>
-            <form id="f1" method="post" style="margin-left: 2%;margin-top: 5%;margin-right: 2%;float: left;background-color: rgba(56, 184, 179, 0.51);padding-left: 1%;padding-right: 1%;padding-bottom: 2%;padding-top: 2%;width: 25%;">
-                Name : <br>
-                <input title="Enter Name" type="text" name="name" placeholder="Name" maxlength="10" required="" style="
-                        background-color: #d5d5d5;
-                        width: 90%;
-                        height: 25px;"><br>
-                DOB : <br>
-                <input title="Select Date of Birth" type="date" name="dob" placeholder="getTodayDate()" min="1947-08-15" max="" required style="
-                        background-color: #d5d5d5;
-                        width: 90%;
-                        height: 25px;"><br>
-                <input title="Male" type="radio" name="gender" id="gender_male" checked="" value="m" style="
-                        margin-top: 10%;
-                        margin-bottom: 5%;
-                        margin-right: 3%;">Male
-                <input title="Female" type="radio" name="gender" id="gender_female" value="f" style="
-                        margin-left: 10%;
-                        margin-right: 3%;
-                        ">Female<br>
-                <input title="Click to Add" type="button" value="Add" onclick="insertRow()" style="
-                        margin-top: 5%;
-                        margin-left: 50%;
-                        width: 50%;
-                        height: 25px;">
+        <div id="left_pan" style="width:27%; float:left; margin-top:4.8%; padding-right:3%">
+            <form id="f1" method="post" style="; background-color:rgba(56, 184, 179, 0.51); padding:5% 5% 5% 5%;">
+                <div id="name_label" style="font-weight:bold;letter-spacing: 2px">
+                    NAME : <br>
+                </div>
+                <div id="input_name_field">
+                    <input title="Enter Name" type="text" name="name" placeholder="Name" maxlength="10" required style="
+                                                                                                                           background-color: #d5d5d5;
+                                                                                                                           width: 90%;
+                                                                                                                           height: 25px;"><br>
+                </div>
+                <div id="dob_label" style="font-weight:bold; letter-spacing:2px; margin-top:5%">
+                    DOB : <br>
+                </div>
+                <div id="input_dob_field">
+                    <input title="Select Date of Birth" type="date" name="dob" placeholder="getTodayDate()" min="1947-08-15" max="" required style="background-color: #d5d5d5; width: 90%; height: 25px;"><br>
+                </div>
+                <div id="gender_selection">
+                    <input title="Male" type="radio" name="gender" id="gender_male" checked="" value="m" style="margin-top: 10%;
+                                                                                                                margin-bottom: 5%;
+                                                                                                                margin-right: 3%;">Male
+                    <input title="Female" type="radio" name="gender" id="gender_female" value="f" style="margin-left: 10%;
+                                                                                                         margin-right: 3%;">Female<br>
+                </div>
+                <div id="add_button">
+                    <input title="Click to Add" type="button" value="Add" onclick="insertRow()" style="margin-left: 40%;
+                                                                                                       width: 50%;
+                                                                                                       height: 25px;">
+                </div>
             </form>
         </div>
-        <div width="50%">
-            <h3 style="text-align:start;float: left;margin-bottom: 1%;">Recorded Data</h3>
-            <h4 style="text-align: center;float: left;margin-left: 31%;margin-right: 2%;margin-bottom: 1%;">Search</h4>
-            <input title="Enter data to search" id="search" type="text" name="search" placeholder="Search" onkeyup="searchRows('tb1')" style="
-                    width: 20%;
-                    height: 25px;
-                    margin-top: 1%;">
-            <table id="tb1" border="1px" width="50%" style="background-color: rgba(56, 184, 179, 0.51);text-align: center;width: 69%;margin-top: 1%;border-top: goldenrod;">
-                <tbody>
-                <tr>
-                    <th style="width: 5%;">Id</th>
-                    <th style="width: 30%;">Name</th>
-                    <th style="width: 5%;">Age</th>
-                    <th style="width: 10%;">Gender</th>
-                </tr>
-                </tbody>
-            </table>
+        <div id="right_pan" style="width: 70%;float:left">
+            <div id="table_title" style="width:50%;float:left;">
+                <h3 style="text-align:start;margin-bottom: 1%;">Recorded Data</h3>
+            </div>
+            <div id="search_label" style="width:15%;float:left;margin-right: %">
+                <h4 style="text-align: center;float: left;margin-left: 31%;margin-right: 2%;margin-bottom: 1%;">Search</h4>
+            </div>
+            <div id="search_box" style="width:35%;float:left">
+                <input title="Enter data to search" id="search" type="text" name="search" placeholder="Search" onkeyup="searchRows('tb1')" style="width: 100%; height: 30px; margin-top: 1%;">
+            </div>
+            <div id="table" style="float:left;width:100%">
+                <table id="tb1" border="1px" style=" background-color: rgba(56, 184, 179, 0.51);text-align: center;margin-top: 1%;border-top: goldenrod;width:100%">
+                    <thead>
+                        <tr>
+                            <th style="width: 5%;background-color: darkorange">Id</th>
+                            <th style="width: 30%;background-color: darkorange">Name</th>
+                            <th style="width: 5%;background-color: darkorange">Age</th>
+                            <th style="width: 10%;background-color: darkorange">Gender</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--Rows to be inserted dynamically.-->
+                    </tbody>
+                </table>
+            </div>
         </div>
+        <style >
+            tr:nth-child(even) {
+                background-color: rgba(75, 177, 173, 0);
+            }
+            tr:nth-child(odd) {
+                background-color: rgba(198, 238, 245, 0.83);
+            }
+            
+        </style>
         <script type="text/javascript">
             var row_id = getId(0);
+            var cell_index_map = {0:"Id", 1:"Name", 2:"Age", 3:"Gender"}
             window.onload = function () {
                 setMaxDOB();
                 loadData();
@@ -82,23 +104,44 @@
                 if (data) {
                     data = JSON.parse(data);
                     var table = document.getElementById('tb1');
+                    
                     var row = table.insertRow();
                     var cell0 = row.insertCell(0);
                     var cell1 = row.insertCell(1);
-                    cell1.setAttribute("contenteditable", "true");
-//                    cell1.setAttribute("msoFieldChange", "editField(this)");
+                    cell1.setAttribute("ondblclick","openFieldEditor(this)"); 
                     var cell2 = row.insertCell(2);
-                    cell2.setAttribute("contenteditable", "true");
+                    cell2.setAttribute("ondblclick","openFieldEditor(this)"); 
                     var cell3 = row.insertCell(3);
-                    cell3.setAttribute("contenteditable", "true");
+                    cell3.setAttribute("ondblclick","openFieldEditor(this)"); 
                     cell0.innerHTML = data.Id;
                     cell1.innerHTML = data.Name;
                     cell2.innerHTML = data.Age;
                     cell3.innerHTML = data.Gender;
                 }
             }
-            function editField(cell) {
-                console.log(cell.innerHTML);
+            function openFieldEditor(cell) {
+                var original = cell.innerHTML;
+                if (!original.match('<input type="text"'))
+                    cell.innerHTML = '<input type="text" value="'+original+'" cur_value="'+original+'" onfocusout="saveField(this)" style="background-color:rgba(194, 214, 149, 0.15);width:50%"/>';
+            }
+            function saveField(editor){
+                var cur_data = editor.getAttribute('cur_value');
+                var new_data = editor.value;
+                var cell = editor.parentElement;
+                cell.innerHTML = new_data;
+                if (cur_data !== new_data){
+                    edited_row = cell.parentElement;
+                    edited_row_id = edited_row.cells[0].innerHTML;
+                    if (localStorage.rows){
+                        rows = JSON.parse(localStorage.rows);
+                        if (rows[edited_row_id]){
+                            row_data = JSON.parse(rows[edited_row_id]);
+                            row_data[cell_index_map[cell.cellIndex]] = new_data;
+                            rows[edited_row_id] = JSON.stringify(row_data);
+                        }
+                        localStorage.rows = JSON.stringify(rows)
+                    }
+                }
             }
             function getId(id){
                 return function () {
